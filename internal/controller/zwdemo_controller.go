@@ -28,7 +28,6 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	v1 "sigs.k8s.io/controller-runtime/pkg/webhook/conversion/testdata/api/v1"
 
@@ -56,10 +55,8 @@ type ZwdemoReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.0/pkg/reconcile
 func (r *ZwdemoReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
-
 	//用于在日志记录器中添加键值对的上下文信息。在这个例子中，"myapp" 是键，req.NamespacedName 是值。req.NamespacedName的值是一个 "命名空间/资源对象名称"的组合
 	logger := r.Log.WithValues("myapp", req.NamespacedName)
 	logger.Info("Reconciling myapp")
