@@ -1,0 +1,27 @@
+# permissions for end users to view zwdemoes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: zwdemo-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: operator4
+    app.kubernetes.io/part-of: operator4
+    app.kubernetes.io/managed-by: kustomize
+  name: zwdemo-viewer-role
+rules:
+- apiGroups:
+  - zw.zw.com
+  resources:
+  - zwdemoes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - zw.zw.com
+  resources:
+  - zwdemoes/status
+  verbs:
+  - get

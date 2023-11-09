@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- zw_v1_zwdemo.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

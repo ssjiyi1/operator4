@@ -1,0 +1,31 @@
+# permissions for end users to edit zwdemoes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: zwdemo-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: operator4
+    app.kubernetes.io/part-of: operator4
+    app.kubernetes.io/managed-by: kustomize
+  name: zwdemo-editor-role
+rules:
+- apiGroups:
+  - zw.zw.com
+  resources:
+  - zwdemoes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - zw.zw.com
+  resources:
+  - zwdemoes/status
+  verbs:
+  - get
