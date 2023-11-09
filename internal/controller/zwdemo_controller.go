@@ -59,9 +59,9 @@ func (r *ZwdemoReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 
 	// TODO(user): your logic here
 	//用于在日志记录器中添加键值对的上下文信息。在这个例子中，"myapp" 是键，req.NamespacedName 是值。req.NamespacedName的值是一个 "命名空间/资源对象名称"的组合
-	logger := r.Log.WithValues("myapp", req.NamespacedName)
-	fmt.Println("==========enter================")
-	logger.Info("Reconciling myapp")
+	//logger := r.Log.WithValues("myapp", req.NamespacedName)
+	fmt.Println("==========enter==== ", req.NamespacedName)
+	//logger.Info("Reconciling myapp")
 	//判断MyApp对象是否存在
 	instance := &zwv1.Zwdemo{}
 	if err := r.Client.Get(ctx, req.NamespacedName, instance); err != nil {
@@ -71,7 +71,8 @@ func (r *ZwdemoReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		return reconcile.Result{}, err
 	}
 
-	logger.Info("app kind: " + instance.Kind + ", app name: " + instance.Name)
+	fmt.Println("app kind: " + instance.Kind + ", app name: " + instance.Name)
+	fmt.Println("instance", instance)
 	if instance.DeletionTimestamp != nil {
 		return reconcile.Result{}, nil
 	}
