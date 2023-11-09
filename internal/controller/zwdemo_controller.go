@@ -18,6 +18,7 @@ package controller
 
 import (
 	"context"
+	"fmt"
 	"github.com/go-logr/logr"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -59,6 +60,7 @@ func (r *ZwdemoReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 	// TODO(user): your logic here
 	//用于在日志记录器中添加键值对的上下文信息。在这个例子中，"myapp" 是键，req.NamespacedName 是值。req.NamespacedName的值是一个 "命名空间/资源对象名称"的组合
 	logger := r.Log.WithValues("myapp", req.NamespacedName)
+	fmt.Println("==========enter================")
 	logger.Info("Reconciling myapp")
 	//判断MyApp对象是否存在
 	instance := &zwv1.Zwdemo{}
