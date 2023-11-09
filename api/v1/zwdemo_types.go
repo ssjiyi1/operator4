@@ -17,6 +17,7 @@ limitations under the License.
 package v1
 
 import (
+	appsv1 "k8s.io/api/apps/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -29,13 +30,19 @@ type ZwdemoSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of Zwdemo. Edit zwdemo_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	//Foo string `json:"foo,omitempty"`
+
+	Image         string `json:"image"`
+	ServicePort   int32  `json:"servicePort"`
+	ContainerPort int32  `json:"containerPort"`
+	Replicas      *int32 `json:"replicas"`
 }
 
 // ZwdemoStatus defines the observed state of Zwdemo
 type ZwdemoStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	appsv1.DeploymentStatus `json:",inline"`
 }
 
 //+kubebuilder:object:root=true
